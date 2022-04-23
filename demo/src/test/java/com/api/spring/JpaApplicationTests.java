@@ -9,5 +9,8 @@ class JpaApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test
+	void mysqlTest() {
 
+	}
 }
