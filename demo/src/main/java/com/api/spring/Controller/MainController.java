@@ -1,21 +1,28 @@
 package com.api.spring.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
 public class MainController {
 
-    @RequestMapping("/main")
-    public String main() {
 
-        return "main page";
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request) {
+
+        return "index.html";
+    }
+    @RequestMapping("/user/signup")
+    public String signup(HttpServletRequest request) {
+
+        return "signup.html";
+    }
+    @RequestMapping("/user/signin")
+    public String signin(HttpServletRequest request) {
+
+        return "signin.html";
     }
 
-    @RequestMapping("/error")
-    @ResponseBody
-    public String errorpage(){
-        return "error page";
-    }
 }

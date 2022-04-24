@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+<form id = "form">
+    <input type="text" name="email",id="emailc"></br>
+    <input type="text" name="password",id="passwordc"></br>
+    <input type="text" name="name",id="namec"></br>
+    <input type="button" value="회원가입" onclick="signup();">
+</form>
+</body>
+</html>
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script>
+    function signup(){
+        var data = {"email":"keun.keun","password":"1234","name":"1234","role":"admin"};
+        console.log(JSON.stringify(data));
+        $.ajax({
+            cache : false,
+            url : "/user/insert",
+            type : 'POST',
+            contentType : 'application/json',
+            data : JSON.stringify(data),
+            success : function(data) {
+                var jsonObj = JSON.parse(data);
+            }, // success
+
+            error : function(xhr, status) {
+                console.log(status);
+                alert(xhr + " : " + status);
+            }
+        }); // $.ajax */
+    }
+</script>

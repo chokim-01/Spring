@@ -32,9 +32,9 @@ public class UserController {
         return us.delete(1L);
     }
 
-    @GetMapping("/user/insert")
+    @PostMapping("/user/insert")
     public boolean insert(@RequestBody User user) {
-
+        System.out.println(user.getEmail());
         return us.insert(user);
     }
 

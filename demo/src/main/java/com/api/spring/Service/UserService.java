@@ -3,7 +3,6 @@ package com.api.spring.Service;
 import com.api.spring.Interface.UserRepository;
 import com.api.spring.VO.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,10 @@ public class UserService {
     }
 
     public boolean insert(User user) {
-        userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User already existed"));
+        System.out.println("123");
+
+        if(userRepository.existsByEmail(user.getEmail()))
+            return false;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;

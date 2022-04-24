@@ -1,7 +1,6 @@
 package com.api.spring.VO;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -26,10 +25,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
-    @ColumnDefault("user")
     @Column(nullable = false)
-    private String role;
+    private final String role = "user";
 
     @Column(nullable = true)
     private String picture;
