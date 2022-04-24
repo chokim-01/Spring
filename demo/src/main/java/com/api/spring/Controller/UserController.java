@@ -3,7 +3,10 @@ package com.api.spring.Controller;
 import com.api.spring.Service.UserService;
 import com.api.spring.VO.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -13,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserService us;
+
+    @Autowired
+    private PasswordEncoder passwd;
 
     @GetMapping("/user/select")
     public List<User> select() {
@@ -27,9 +33,15 @@ public class UserController {
     }
 
     @GetMapping("/user/insert")
-    public boolean insert() {
+    public boolean insert(@RequestBody User user) {
 
-        User user = User.builder().email("a@a").name("jaegon").password("1234").build();
         return us.insert(user);
     }
+
+    @PostMapping("/user/login")
+    public boolean login(@RequestBody User user) {
+
+        return false;
+    }
+
 }
